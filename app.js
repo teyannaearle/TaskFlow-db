@@ -1,6 +1,7 @@
 // DEPENDENCIES
 const cors = require("cors");
 const express = require("express");
+const usersController = require("./controllers/usersController.js")
 
 // CONFIGURATION
 const app = express();
@@ -14,26 +15,12 @@ app.get("/", (req, res) => {
   res.send("Hello, world!");
 });
 
+app.use("/users", usersController)
+
 /////////////////////////////////////
 // REMOVE AFTER SUCCESSFUL DEPLOYMENT
 /////////////////////////////////////
 const db = require("./db/dbConfig");
-
-app.get("/test", async (req, res) => {
-  try {
-    const allDays = await db.any("SELECT * FROM test");
-    res.json({allDays});
-  } catch (err) {
-    // res.json(err);
-    res.status(500).json({
-      error: {
-        message: err.message,
-        code: err.code,
-      },
-    });
-  }
-});
-
 /////////////////////////////////////
 // REMOVE AFTER SUCCESSFUL DEPLOYMENT
 /////////////////////////////////////

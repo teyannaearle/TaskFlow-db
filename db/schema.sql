@@ -1,11 +1,11 @@
-DROP DATABASE IF EXISTS template_test_dev;
-CREATE DATABASE template_test_dev;
+DROP DATABASE IF EXISTS taskflow_db;
+CREATE DATABASE taskflow_db;
 
-\c template_test_dev;
+\c taskflow_db;
 
-DROP TABLE IF EXISTS test;
-
-CREATE TABLE test (
-    id SERIAL PRIMARY KEY, 
-    name TEXT
+DROP TABLE IF EXISTS users CASCADE;
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY, 
+    email VARCHAR (255) UNIQUE NOT NULL, 
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

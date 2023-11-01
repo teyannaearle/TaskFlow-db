@@ -1,10 +1,2 @@
-\c template_test_dev;
+\c taskflow_db;
 
-INSERT INTO test (name) VALUES
-('Monday'),
-('Tuesday'),
-('Wednesday'),
-('Thursday'),
-('Friday'),
-('Saturday'),
-('Sunday');
