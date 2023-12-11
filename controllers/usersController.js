@@ -1,7 +1,7 @@
 const express = require("express");
 const users = express.Router({ mergeParams: true });
 
-const { getUser, createNewUser } = require("../queries/users.js");
+const {getUser, createNewUser } = require("../queries/users.js");
 
 users.get("/:email", async (req, res) => {
   const { email } = req.params;
@@ -13,16 +13,11 @@ users.get("/:email", async (req, res) => {
         success: true,
         payload: user,
       });
-    } else {
-      res.status(202).json({
-        success: false,
-        payload: `No registered user found with email ${email}`,
-      });
     }
   } catch (e) {
-    res.status(404).json({
+    res.status(202).json({
       success: false,
-      payload: e,
+      payload: `No registered user found with email ${email}`,
     });
   }
 });
